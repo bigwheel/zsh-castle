@@ -6,4 +6,4 @@ set -eux
 script_dir=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 
 git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-cp $script_dir/my-zshrc.zsh $HOME/.oh-my-zsh/custom/my-zshrc.zsh
+ln -s $script_dir/my-zshrc.zsh $HOME/.oh-my-zsh/custom/my-zshrc.zsh
