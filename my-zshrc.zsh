@@ -185,12 +185,24 @@ if [ -d ~/dotfiles -o -L ~/dotfiles ]; then
     HISTFILE=$HOME/dotfiles/.zsh_history
 fi
 
+if [ -e ~/.homesick/repos/homeshick ]
+then
+    source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+    fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+    compinit
+fi
+
+if [ -e ~/.dir_colors ]
+then
+    eval `dircolors $HOME/.dir_colors/dircolors`
+fi
+
 #if which xmodmap &> /dev/null; then
 #    xmodmap $HOME/.Xmodmap
 #fi
 
 if [ -f ~/.zshrc.local ]; then
-  source ~/.zshrc.local
+    source ~/.zshrc.local
 fi
 
 # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
