@@ -7,4 +7,3 @@ script_dir=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 
 # oh-my-zsh代替を使用することでvimやtmuxと同じく起動時に動的に取ってくることができそう
 git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-ln -s $script_dir/my-zshrc.zsh $HOME/.oh-my-zsh/custom/my-zshrc.zsh
