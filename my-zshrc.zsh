@@ -157,7 +157,8 @@ alias -g .....='../../../..'
 #fi
 
 # tmuxのため
-export TERM="xterm-256color"
+# tmux-sensibleがやってくれるので不要になった
+# export TERM="xterm-256color"
 
 #if [ -z $TMUX ] ; then
 #  if tmux ls &> /dev/null ; then
@@ -179,10 +180,10 @@ zstyle ':completion:*' group-name ''
 
 zstyle ':completion:*:git:*' user-commands ${${(k)commands[(I)git-*]}#git-}
 
-# もう面倒なのでdotfilesある前提でHISTFILEの位置を記述する
-# 上手く動かなかったので無効化する
-if [ -d ~/dotfiles -o -L ~/dotfiles ]; then
-    HISTFILE=$HOME/dotfiles/.zsh_history
+# .zsh_historyはリンクではうまく動かないのでHISTFILEで指定する
+if [ -e $HOME/Dropbox/linux/dotfiles/.zsh_history ]
+then
+    HISTFILE=$HOME/Dropbox/linux/dotfiles/.zsh_history
 fi
 
 if [ -e ~/.homesick/repos/homeshick ]
@@ -192,6 +193,7 @@ then
     compinit
 fi
 
+# gnome-terminalのsolarized絡みで入れたdir_colorsの読み込み設定
 if [ -e ~/.dir_colors ]
 then
     eval `dircolors $HOME/.dir_colors/dircolors`
@@ -201,10 +203,11 @@ fi
 #    xmodmap $HOME/.Xmodmap
 #fi
 
-if [ -f ~/.zshrc.local ]; then
+if [ -f ~/.zshrc.local ]
+then
     source ~/.zshrc.local
 fi
 
 # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
-export PATH=$PATH:/usr/share/doc/git/contrib/diff-highlight
+export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight # mac
+export PATH=$PATH:/usr/share/doc/git/contrib/diff-highlight # ubuntu
