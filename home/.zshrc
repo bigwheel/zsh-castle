@@ -130,7 +130,7 @@ function ec() {
 }
 
 alias grep="grep --color=always"
-alias tree="tree -CAN"
+alias tree="tree -CN"
 
 #alias gco="git checkout"
 #alias gci="git commit -v"
