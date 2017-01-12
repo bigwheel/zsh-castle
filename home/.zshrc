@@ -205,31 +205,26 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:git:*' user-commands ${${(k)commands[(I)git-*]}#git-}
 
 # .zsh_historyはリンクではうまく動かないのでHISTFILEで指定する
-if [ -e $HOME/Dropbox/linux/dotfiles/.zsh_history ]
-then
+if [ -e $HOME/Dropbox/linux/dotfiles/.zsh_history ]; then
     HISTFILE=$HOME/Dropbox/linux/dotfiles/.zsh_history
 fi
 
-if [ -e ~/.homesick/repos/homeshick ]
-then
+if [ -e ~/.homesick/repos/homeshick ]; then
     source "$HOME/.homesick/repos/homeshick/homeshick.sh"
     fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
     compinit
 fi
 
 # gnome-terminalのsolarized絡みで入れたdir_colorsの読み込み設定
-if [ -e ~/.dir_colors ]
-then
+if [ -e ~/.dir_colors ]; then
     eval `dircolors $HOME/.dir_colors/dircolors`
 fi
 
-if [ -e /usr/local/share/zsh/site-functions/_aws ]
-then
+if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
     source /usr/local/share/zsh/site-functions/_aws
 fi
 
-if [ -e $HOME/.rbenv/bin ]
-then
+if [ -e $HOME/.rbenv/bin ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
@@ -237,8 +232,7 @@ fi
 #    xmodmap $HOME/.Xmodmap
 #fi
 
-if [ -f ~/.zshrc.local ]
-then
+if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
 
