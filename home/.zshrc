@@ -223,6 +223,16 @@ then
     eval `dircolors $HOME/.dir_colors/dircolors`
 fi
 
+if [ -e /usr/local/share/zsh/site-functions/_aws ]
+then
+    source /usr/local/share/zsh/site-functions/_aws
+fi
+
+if [ -e $HOME/.rbenv/bin ]
+then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+fi
+
 #if which xmodmap &> /dev/null; then
 #    xmodmap $HOME/.Xmodmap
 #fi
