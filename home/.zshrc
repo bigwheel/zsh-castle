@@ -229,6 +229,11 @@ if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
     source /usr/local/share/zsh/site-functions/_aws
 fi
 
+if [ -e ~/go ]; then
+    export GOPATH=$HOME/go
+    export PATH=$PATH:$GOPATH/bin
+fi
+
 if [ -e $HOME/.rbenv/bin ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
 fi
