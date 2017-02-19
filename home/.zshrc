@@ -9,9 +9,6 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "themes/terminalparty", from:oh-my-zsh, as:theme
 
 zplug "zsh-users/zsh-autosuggestions"
-# 補完される文字の色が暗すぎて見づらいので明度を調整
-# https://github.com/zsh-users/zsh-autosuggestions#suggestion-highlight-style
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -26,6 +23,12 @@ zplug load
 
 # Customize to your needs...
 
+# zsh-autosuggestionsで補完される文字の色が暗すぎて見づらいので明度を調整
+# https://github.com/zsh-users/zsh-autosuggestions#suggestion-highlight-style
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+
+# http://superuser.com/questions/613685/how-stop-zsh-from-eating-space-before-pipe-symbol
+ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 
 # mycom.1
 autoload -U compinit
