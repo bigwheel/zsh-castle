@@ -150,6 +150,7 @@ alias tree="tree -CN"
 
 alias gba="git branch --color -a | grep --color=never -v ' trash/'"
 alias gd="git diff"
+alias gdst="git diff --stat"
 alias gdc="git diff --cached"
 alias gcac="git commit -v -a -c HEAD"
 #alias gdm="git diff master"
