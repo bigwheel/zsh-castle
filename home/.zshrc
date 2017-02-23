@@ -7,6 +7,7 @@ source ~/.zplug/init.zsh
 
 zplug "plugins/git", from:oh-my-zsh
 zplug "themes/terminalparty", from:oh-my-zsh, as:theme
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "zsh-users/zsh-autosuggestions"
 
