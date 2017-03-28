@@ -230,8 +230,17 @@ if [ -e ~/.dir_colors ]; then
     eval `dircolors $HOME/.dir_colors/dircolors`
 fi
 
-if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
-    source /usr/local/share/zsh/site-functions/_aws
+# site-function下なので不要そうだが
+# http://qiita.com/takeo-asai/items/c0ab835b9ba244d0d17a
+# if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
+#     source /usr/local/share/zsh/site-functions/_aws
+# fi
+# http://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-command-completion.html
+# 本家マニュアルに従い以下の記述へ変更するが、
+# 上のqiitaに書かれている通り落ちるという報告もあるのでやばかったら削除
+# 後々再検討する場合はaws_zsh_completer.sh自体のヘッダの記述も参考にする
+if which aws_zsh_completer.sh &> /dev/null; then
+    source aws_zsh_completer.sh
 fi
 
 if [ -e ~/go ]; then
