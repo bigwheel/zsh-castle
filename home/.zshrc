@@ -13,7 +13,11 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "themes/terminalparty", from:oh-my-zsh, as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-zplug "zsh-users/zsh-autosuggestions"
+# ここに書かれている通りzsh-syntax-highlightingとの相性問題でSegfaultがでる。
+# そのため修正が入っているdevelopブランチへ一時的に切り替え
+# https://github.com/zsh-users/zsh-autosuggestions/pull/150
+# ここの一番最後に書かれているv0.4.0がリリースされればmasterに戻していいはず
+zplug "zsh-users/zsh-autosuggestions", at:develop
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
