@@ -1,3 +1,7 @@
+# http://yonchu.hatenablog.com/entry/20120415/1334506855
+## 重複パスを登録しない
+typeset -U path cdpath fpath manpath
+
 # zplugが存在しなければインストール
 if ! [ -e ~/.zplug/ ]; then
   curl -sL zplug.sh/installer | zsh
@@ -30,6 +34,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 # http://superuser.com/questions/613685/how-stop-zsh-from-eating-space-before-pipe-symbol
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
+
+# autoload -U compinit より前にfpathを設定する必要があるためここに記述
+if [ -e ~/.homesick/repos/homeshick ]; then
+    source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+    fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+fi
 
 # mycom.1
 autoload -U compinit
@@ -217,12 +227,6 @@ zstyle ':completion:*:git:*' user-commands ${${(k)commands[(I)git-*]}#git-}
 # .zsh_historyはリンクではうまく動かないのでHISTFILEで指定する
 if [ -e $HOME/Dropbox/linux/dotfiles/.zsh_history ]; then
     HISTFILE=$HOME/Dropbox/linux/dotfiles/.zsh_history
-fi
-
-if [ -e ~/.homesick/repos/homeshick ]; then
-    source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-    fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
-    compinit
 fi
 
 # gnome-terminalのsolarized絡みで入れたdir_colorsの読み込み設定
