@@ -36,7 +36,7 @@ zplug load
 # https://github.com/zsh-users/zsh-autosuggestions#suggestion-highlight-style
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
-# http://superuser.com/questions/613685/how-stop-zsh-from-eating-space-before-pipe-symbol
+# https://superuser.com/a/613817
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 
 # autoload -U compinit より前にfpathを設定する必要があるためここに記述
@@ -113,44 +113,8 @@ alias du="du -h"
 # mycom.9
 zstyle ':completion:*' list-colors ''
 
-# screen section
-#if [ $TERM != "screen" ]; then
-#    exec screen -S main -xRR -q
-#fi
-
-#alias screen='screen -U -D -RR'
-
-# for trash-cli command
-# following section replaces rm to trash
-
-# 0.10 >= version
-if which trash &>/dev/null; then
-    alias rm=trash
-fi
-# 0.10 < version
-if which trash-put &>/dev/null; then
-    alias rm=trash-put
-fi
-
-# for sudo alias. refer to http://d.hatena.ne.jp/yuta84q/20090301/1235896452
+# http://askubuntu.com/a/22043
 alias sudo='sudo '
-
-# ssh replace. If ssh is typed, zsh create new screen and execute ssh in its.
-# addition, zsh rename screen name to ssh host name.
-function ssh_screen(){
- eval server=\${$#}
- screen -t $server ssh "$@"
-}
-#if [ x$TERM = xscreen ]; then
-#  alias ssh=ssh_screen
-#fi
-
-# below section was disabled, because Error occured.
-
-#alias ec="emacsclient"
-function ec() {
-    emacsclient -n $1
-}
 
 alias grep="grep --color=always"
 alias tree="tree -CN"
@@ -194,28 +158,6 @@ alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 
-# zsh設定ファイルの置かれてるディレクトリ関連
-#if [ -d ~/dotfiles -o -L ~/dotfiles ]; then
-#  source ~/dotfiles/cdd
-#  chpwd() {
-#    _cdd_chpwd
-#  }
-#  zstyle ':completion:*' group-name ''
-#  zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
-#fi
-
-# tmuxのため
-# tmux-sensibleがやってくれるので不要になった
-# export TERM="xterm-256color"
-
-#if [ -z $TMUX ] ; then
-#  if tmux ls &> /dev/null ; then
-#    tmux attach -t 0
-#  else
-#    tmux
-#  fi
-#fi
-
 REPORTTIME=10
 
 PATH=$PATH:$HOME/bin
@@ -238,13 +180,9 @@ if [ -e ~/.dir_colors ]; then
     eval `dircolors $HOME/.dir_colors/dircolors`
 fi
 
-# site-function下なので不要そうだが
-# http://qiita.com/takeo-asai/items/c0ab835b9ba244d0d17a
-# if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
-#     source /usr/local/share/zsh/site-functions/_aws
-# fi
 # http://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-command-completion.html
 # 本家マニュアルに従い以下の記述へ変更するが、
+# http://qiita.com/takeo-asai/items/c0ab835b9ba244d0d17a
 # 上のqiitaに書かれている通り落ちるという報告もあるのでやばかったら削除
 # 後々再検討する場合はaws_zsh_completer.sh自体のヘッダの記述も参考にする
 if which aws_zsh_completer.sh &> /dev/null; then
