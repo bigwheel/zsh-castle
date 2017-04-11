@@ -17,7 +17,15 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 # そのため修正が入っているdevelopブランチへ一時的に切り替え
 # https://github.com/zsh-users/zsh-autosuggestions/pull/150
 # ここの一番最後に書かれているv0.4.0がリリースされればmasterに戻していいはず
-zplug "zsh-users/zsh-autosuggestions", at:develop
+# https://github.com/zsh-users/zsh-autosuggestions/issues/215
+# 追加: これの解決も待つこと
+# https://github.com/zsh-users/zsh-autosuggestions/issues/230
+# これが原因で0.3.3以降にできない。これの解決を待つこと。
+zplug "zsh-users/zsh-autosuggestions", at:v0.3.3
+
+zplug "junegunn/fzf-bin", as:command, rename-to:"fzf", from:gh-r
+zplug "b4b4r07/enhancd", use:init.sh, on:"junegunn/fzf-bin"
+
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
