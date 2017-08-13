@@ -4,7 +4,7 @@ typeset -U path cdpath fpath manpath
 
 # zplugが存在しなければインストール
 if ! [ -e ~/.zplug/ ]; then
-  curl -sL zplug.sh/installer | zsh
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 
 source ~/.zplug/init.zsh
@@ -13,15 +13,10 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "themes/terminalparty", from:oh-my-zsh, as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# ここに書かれている通りzsh-syntax-highlightingとの相性問題でSegfaultがでる。
-# そのため修正が入っているdevelopブランチへ一時的に切り替え
-# https://github.com/zsh-users/zsh-autosuggestions/pull/150
-# ここの一番最後に書かれているv0.4.0がリリースされればmasterに戻していいはず
+# 追加: これ,ubuntuの5.4.1環境では解決しているように見えた。
+# macでも確認できたらこのコメントを削除すること
 # https://github.com/zsh-users/zsh-autosuggestions/issues/215
-# 追加: これの解決も待つこと
-# https://github.com/zsh-users/zsh-autosuggestions/issues/230
-# これが原因で0.3.3以降にできない。これの解決を待つこと。
-zplug "zsh-users/zsh-autosuggestions", at:v0.3.3
+zplug "zsh-users/zsh-autosuggestions"
 
 zplug "junegunn/fzf-bin", as:command, rename-to:"fzf", from:gh-r
 zplug "b4b4r07/enhancd", use:init.sh, on:"junegunn/fzf-bin"
@@ -209,14 +204,13 @@ if [ -e $HOME/.rbenv/bin ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
-#if which xmodmap &> /dev/null; then
-#    xmodmap $HOME/.Xmodmap
-#fi
-
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
 
 # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight # mac
-export PATH=$PATH:/usr/share/doc/git/contrib/diff-highlight # ubuntu
+if [ "$(uname)" = 'Darwin' ]; then
+    export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight # mac
+else
+    export PATH=$PATH:/usr/share/doc/git/contrib/diff-highlight # ubuntu
+fi
