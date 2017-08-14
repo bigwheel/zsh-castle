@@ -204,6 +204,10 @@ if [ -e $HOME/.rbenv/bin ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
+if which colordiff &> /dev/null; then
+    alias diff=colordiff
+fi
+
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
