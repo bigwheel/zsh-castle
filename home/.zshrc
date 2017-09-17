@@ -213,3 +213,32 @@ if [ "$(uname)" = 'Darwin' ]; then
 else
     export PATH=$PATH:/usr/share/doc/git/contrib/diff-highlight # ubuntu
 fi
+
+
+
+###################################################
+#                    fzf設定                      #
+###################################################
+
+# 本家のhistory search用関数だと
+# 直接呼び出しならうまく行くがbindkeyするとなぜか
+# 選択後にEnterを押さないと選択したコマンドが入力されなかったので
+# こちらから拝借
+# https://blog.tsub.me/post/move-from-peco-to-fzf/
+function history-fzf() {
+  local tac
+
+  if which tac > /dev/null; then
+    tac="tac"
+  else
+    tac="tail -r"
+  fi
+
+  BUFFER=$(history -n 1 | eval $tac | fzf --query "$LBUFFER")
+  CURSOR=$#BUFFER
+
+  zle reset-prompt
+}
+
+zle -N history-fzf
+bindkey '^r' history-fzf
