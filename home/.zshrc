@@ -107,12 +107,9 @@ if [ "$(uname)" = 'Darwin' ]; then
 else
     alias ls='ls -v --group-directories-first --color=auto --classify -h'
 fi
-alias lg="ls -g"
 alias la="ls -a"
-alias lf="ls -F"
 alias ll="ls -l"
 alias lla="ls -al"
-alias lal="ls -al"
 
 alias df="df -h"
 
@@ -159,6 +156,10 @@ if which pcregrep &> /dev/null; then
     alias pcregrep="pcregrep -Hn --color"
 fi
 
+if which colordiff &> /dev/null; then
+    alias diff=colordiff
+fi
+
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
@@ -200,10 +201,6 @@ fi
 
 if [ -e $HOME/.rbenv/bin ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
-fi
-
-if which colordiff &> /dev/null; then
-    alias diff=colordiff
 fi
 
 if [ -f ~/.zshrc.local ]; then
