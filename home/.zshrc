@@ -57,11 +57,6 @@ export ALTERNATE_EDITOR=vi
 export PAGER=less
 
 
-# mycom.2
-
-# Prompt Settings
-setopt prompt_subst
-
 # mycom.3
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -89,10 +84,6 @@ setopt auto_pushd
 setopt correct
 setopt list_packed
 setopt nolistbeep
-
-# mycom.6
-#autoload predict-on
-#predict-on
 
 REPORTTIME=10
 
@@ -140,14 +131,6 @@ alias tree="tree -CN"
 if which git-foresta &> /dev/null; then
     alias git-foresta="git-foresta | less -RSX"
 fi
-
-#alias gco="git checkout"
-#alias gci="git commit -v"
-#alias gst="git status"
-#alias gss="git status -s "
-#alias gbr="git branch"
-#alias gad="git add"
-#alias glg="git log --graph --color"
 
 alias gba="git branch --color -a | grep --color=never -v ' trash/'"
 alias gd="git diff"
