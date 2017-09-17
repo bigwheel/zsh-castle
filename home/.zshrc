@@ -94,6 +94,22 @@ setopt nolistbeep
 #autoload predict-on
 #predict-on
 
+REPORTTIME=10
+
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*:git:*' user-commands ${${(k)commands[(I)git-*]}#git-}
+
+
+
+###################################################
+#            コマンドエイリアス系                 #
+###################################################
+
 #setopt complete_aliases
 if [ "$(uname)" = 'Darwin' ]; then
     alias ls='ls -v -G -h'
@@ -122,7 +138,7 @@ alias sudo='sudo '
 alias grep="grep --color=always"
 alias tree="tree -CN"
 if which git-foresta &> /dev/null; then
-	alias git-foresta="git-foresta | less -RSX"
+    alias git-foresta="git-foresta | less -RSX"
 fi
 
 #alias gco="git checkout"
@@ -157,24 +173,23 @@ else
 fi
 
 if which pcregrep &> /dev/null; then
-	alias pcregrep="pcregrep -Hn --color"
+    alias pcregrep="pcregrep -Hn --color"
 fi
 
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
+alias -g .../='../..'
+alias -g ..../='../../..'
+alias -g ...../='../../../..'
 
-REPORTTIME=10
+
+
+###################################################
+#                 パス/source系                   #
+###################################################
 
 PATH=$PATH:$HOME/bin
-
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:descriptions' format '%B%d%b'
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:warnings' format 'No matches for: %d'
-zstyle ':completion:*' group-name ''
-
-zstyle ':completion:*:git:*' user-commands ${${(k)commands[(I)git-*]}#git-}
 
 # .zsh_historyはリンクではうまく動かないのでHISTFILEで指定する
 if [ -e $HOME/Dropbox/linux/dotfiles/.zsh_history ]; then
