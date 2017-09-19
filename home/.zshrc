@@ -235,7 +235,7 @@ function history-fzf() {
     tac="tail -r"
   fi
 
-  BUFFER=$(history -n 1 | eval $tac | fzf --query "$LBUFFER")
+  BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf -e +s --tac --query "$LBUFFER" | sed 's/ *[0-9]* *//')
   CURSOR=$#BUFFER
 
   zle reset-prompt
