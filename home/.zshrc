@@ -20,6 +20,7 @@ zplug "zsh-users/zsh-autosuggestions"
 
 zplug "junegunn/fzf-bin", as:command, rename-to:"fzf", from:gh-r
 zplug "b4b4r07/enhancd", use:init.sh, on:"junegunn/fzf-bin"
+zplug "mollifier/cd-gitroot"
 
 
 # Install plugins if there are plugins that have not been installed
