@@ -235,6 +235,8 @@ function history-fzf() {
     tac="tail -r"
   fi
 
+  # 一つ目のsedはSHARE_HISTORY有効時にfc -lコマンドが他のタブで入力されたコマンドの数字の後に勝手に*をつけるのを除去するため
+  # LANG=CはUTF-8っぽい行でsedが失敗するため、無視するよう設定
   BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | LANG=C sed 's/^\( *[0-9]*\)\*/\1 /' | fzf -e +s --tac --query "$LBUFFER" | sed 's/^[0-9]* *//')
   CURSOR=$#BUFFER
 
