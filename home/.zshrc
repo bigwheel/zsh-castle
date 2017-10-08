@@ -226,6 +226,9 @@ fi
 # 選択後にEnterを押さないと選択したコマンドが入力されなかったので
 # こちらから拝借
 # https://blog.tsub.me/post/move-from-peco-to-fzf/
+# 改造に伴い参考リンク追加
+# https://github.com/junegunn/fzf/wiki/examples#opening-files
+# https://github.com/junegunn/fzf/issues/477
 function history-fzf() {
   local tac
 
@@ -237,10 +240,19 @@ function history-fzf() {
 
   # 一つ目のsedはSHARE_HISTORY有効時にfc -lコマンドが他のタブで入力されたコマンドの数字の後に勝手に*をつけるのを除去するため
   # LANG=CはUTF-8っぽい行でsedが失敗するため、無視するよう設定
-  BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | LANG=C sed 's/^\( *[0-9]*\)\*/\1 /' | fzf -e +s --tac --query "$LBUFFER" | sed 's/^[0-9]* *//')
+  local out key comm
+  IFS=$'\n' out=($( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | \
+      LANG=C sed 's/^\( *[0-9]*\)\*/\1 /' | \
+      fzf -e +s --tac --query "$LBUFFER" --expect=enter,ctrl-e,ctrl-f))
+  key=$(head -1 <<< "$out")
+  comm=$(head -2 <<< "$out" | tail -1 | sed 's/^[0-9]* *//')
+  BUFFER=$comm
   CURSOR=$#BUFFER
 
   zle reset-prompt
+  if [ "$key" = 'enter' ]; then
+      zle accept-line
+  fi
 }
 
 zle -N history-fzf
