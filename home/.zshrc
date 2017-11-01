@@ -243,7 +243,7 @@ function history-fzf() {
   local out key comm
   IFS=$'\n' out=($( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | \
       LANG=C sed 's/^\( *[0-9]*\)\*/\1 /' | \
-      fzf -e +s --tac --query "$LBUFFER" --expect=enter,ctrl-e,ctrl-f))
+      fzf -e +s --tac --query "$LBUFFER" --expect=enter,ctrl-e,ctrl-f,ctrl-a,ctrl-b))
   key=$(head -1 <<< "$out")
   comm=$(head -2 <<< "$out" | tail -1 | sed 's/^[0-9]* *//')
   BUFFER=$comm
