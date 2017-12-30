@@ -229,6 +229,13 @@ fi
 # 改造に伴い参考リンク追加
 # https://github.com/junegunn/fzf/wiki/examples#opening-files
 # https://github.com/junegunn/fzf/issues/477
+
+
+if which fzf-tmux &> /dev/null; then
+  FZF_PATH=$(which fzf-tmux)
+else
+  FZF_PATH=fzf
+fi
 function history-fzf() {
   local tac
 
@@ -243,7 +250,7 @@ function history-fzf() {
   local out key comm
   IFS=$'\n' out=($( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | \
       LANG=C sed 's/^\( *[0-9]*\)\*/\1 /' | \
-      fzf -e +s --tac --query "$LBUFFER" --expect=enter,ctrl-e,ctrl-f,ctrl-a,ctrl-b))
+      $FZF_PATH -e +s --tac --query "$LBUFFER" --expect=enter,ctrl-e,ctrl-f,ctrl-a,ctrl-b))
   key=$(head -1 <<< "$out")
   comm=$(head -2 <<< "$out" | tail -1 | sed 's/^[0-9]* *//')
   BUFFER=$comm
