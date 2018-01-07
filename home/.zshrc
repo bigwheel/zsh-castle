@@ -264,3 +264,12 @@ function history-fzf() {
 
 zle -N history-fzf
 bindkey '^r' history-fzf
+
+# pipeと引数どちらでも表示できるjq less関数
+function jqless() {
+    if [ -p /dev/stdin ]; then
+        cat - | jq -C '.' | less
+    else
+        cat $@ | jq -C '.' | less
+    fi
+}
