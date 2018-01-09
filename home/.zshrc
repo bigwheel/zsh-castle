@@ -215,6 +215,8 @@ else
     export PATH=$PATH:/usr/share/doc/git/contrib/diff-highlight # ubuntu
 fi
 
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 
 ###################################################
