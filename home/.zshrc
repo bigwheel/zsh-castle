@@ -204,6 +204,11 @@ if [ -e $HOME/.rbenv/bin ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
+if [ -e $HOME/.anyenv/ ]; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+fi
+
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
