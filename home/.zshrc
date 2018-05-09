@@ -179,6 +179,8 @@ PATH=$PATH:$HOME/bin
 # .zsh_historyはリンクではうまく動かないのでHISTFILEで指定する
 if [ -e $HOME/Dropbox/linux/dotfiles/.zsh_history ]; then
     HISTFILE=$HOME/Dropbox/linux/dotfiles/.zsh_history
+else
+    HISTFILE=$HOME/.zsh_history
 fi
 
 # gnome-terminalのsolarized絡みで入れたdir_colorsの読み込み設定
