@@ -7,5 +7,6 @@ while true; do
   break
 done < $1
 
-# うまく動いていない。要改良
-sshpass -f $pw_file_path ssh $id@$host
+# $pw_file_path に含まれるチルダ/$HOMEを解決させるにはevalが必要らしい
+# https://qiita.com/kod314/items/f8aa4929501882e97b38
+SSHPASS=$(eval cat $pw_file_path) sshpass -e ssh $id@$host
