@@ -282,3 +282,9 @@ function jqless() {
         cat $@ | jq -C '.' | less
     fi
 }
+
+function precmd_set_git_root_variable() {
+  GIT_ROOT=$(git rev-parse --show-toplevel 2> /dev/null)
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd precmd_set_git_root_variable
