@@ -124,7 +124,7 @@ zstyle ':completion:*' list-colors ''
 # http://askubuntu.com/a/22043
 alias sudo='sudo '
 
-alias grep="grep --color=always"
+alias grep="grep --color=always -i"
 alias tree="tree -CN"
 if which git-foresta &> /dev/null; then
     alias git-foresta="git-foresta | less -RSX"
