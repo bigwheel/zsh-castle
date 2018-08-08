@@ -142,10 +142,12 @@ alias gcac="git commit -v -a -c HEAD"
 #alias gd5="git diff HEAD~5"
 #alias gd10="git diff HEAD~10"
 alias glg1="git log --pretty=format:\"%C(yellow)%h%Creset|%C(blue)%an%Creset|%C(green)%cr%Creset|%s\" | awk -F '|' '{ printf \"%s %-30s %-25s %s\n\", \$1, \$2, \$3, \$4 }' | less"
-function gdf() {
+# git diff to head
+function gdh() {
   git diff $1..HEAD
 }
-function gdsf() {
+# git diff to head summary
+function gdfs() {
   git diff --stat=120,120 $1..HEAD
 }
 
