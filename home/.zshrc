@@ -10,7 +10,9 @@ fi
 source ~/.zplug/init.zsh
 
 zplug "plugins/git", from:oh-my-zsh
-zplug "themes/terminalparty", from:oh-my-zsh, as:theme
+# 絵文字問題が治るまでコメントアウト
+#zplug "themes/terminalparty", from:oh-my-zsh, as:theme
+zplug "~/.zplug/repos/robbyrussell/oh-my-zsh/custom/themes/t", from:local, as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # 追加: これ,ubuntuの5.4.1環境では解決しているように見えた。
@@ -147,7 +149,7 @@ function gdh() {
   git diff $1..HEAD
 }
 # git diff to head summary
-function gdfs() {
+function gdhs() {
   git diff --stat=120,120 $1..HEAD
 }
 
@@ -296,3 +298,4 @@ function precmd_set_git_root_variable() {
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd precmd_set_git_root_variable
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
