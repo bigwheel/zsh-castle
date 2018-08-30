@@ -10,9 +10,12 @@ fi
 source ~/.zplug/init.zsh
 
 zplug "plugins/git", from:oh-my-zsh
-# 絵文字問題が治るまでコメントアウト
-#zplug "themes/terminalparty", from:oh-my-zsh, as:theme
-zplug "~/.zplug/repos/robbyrussell/oh-my-zsh/custom/themes/t", from:local, as:theme
+if [ "$(uname)" = 'Darwin' ]; then
+  # 絵文字問題でmacでは描画がずれる
+  zplug "~/.zplug/repos/robbyrussell/oh-my-zsh/custom/themes/t", from:local, as:theme
+else
+  zplug "themes/terminalparty", from:oh-my-zsh, as:theme
+fi
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # 追加: これ,ubuntuの5.4.1環境では解決しているように見えた。
