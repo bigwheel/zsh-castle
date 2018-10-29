@@ -27,6 +27,8 @@ zplug "junegunn/fzf-bin", as:command, rename-to:"fzf", from:gh-r
 zplug "b4b4r07/enhancd", use:init.sh, on:"junegunn/fzf-bin"
 zplug "mollifier/cd-gitroot"
 
+# https://blog.shibayu36.org/entry/2017/04/01/213621
+zplug "Tarrasch/zsh-autoenv"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -137,7 +139,6 @@ fi
 
 alias gba="git branch --color -a | grep --color=never -v ' trash/'"
 alias gd="git diff"
-alias gdst="git diff --stat"
 alias gdc="git diff --cached"
 alias gcac="git commit -v -a -c HEAD"
 #alias gdm="git diff master"
@@ -147,14 +148,20 @@ alias gcac="git commit -v -a -c HEAD"
 #alias gd5="git diff HEAD~5"
 #alias gd10="git diff HEAD~10"
 alias glg1="git log --pretty=format:\"%C(yellow)%h%Creset|%C(blue)%an%Creset|%C(green)%cr%Creset|%s\" | awk -F '|' '{ printf \"%s %-30s %-25s %s\n\", \$1, \$2, \$3, \$4 }' | less"
+# デフォルトで定義されているけどstatが良い感じになるよう再定義
+# TODO: ここ、tputコマンドで自動的に文字幅を決めるようにする
+alias glg="git log --stat=300,300 --stat-graph-width=20"
+alias gdst="git diff --stat=300,300 --stat-graph-width=20"
 # git diff to head
 function gdh() {
   git diff $1..HEAD
 }
 # git diff to head summary
 function gdhs() {
-  git diff --stat=120,120 $1..HEAD
+  git diff --stat=300,300 --stat-graph-width=30 $1..HEAD
 }
+
+# git diff --stat=300,300 --stat-graph-width=10 origin/develop..HEAD
 
 alias less="less -R"
 
@@ -181,6 +188,7 @@ alias -g .../='../..'
 alias -g ..../='../../..'
 alias -g ...../='../../../..'
 
+alias agl=ag -l
 
 
 ###################################################
