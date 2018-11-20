@@ -279,7 +279,7 @@ function history-fzf() {
   # LANG=CはUTF-8っぽい行でsedが失敗するため、無視するよう設定
   local out key comm
   IFS=$'\n' out=($( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | \
-      LANG=C sed 's/^\( *[0-9]*\)\*/\1 /' | \
+      LANG=C LC_CTYPE=C sed 's/^\( *[0-9]*\)\*/\1 /' | \
       $FZF_PATH -e +s --tac --query "$LBUFFER" --expect=enter,ctrl-e,ctrl-f,ctrl-a,ctrl-b))
   key=$(head -1 <<< "$out")
   comm=$(head -2 <<< "$out" | tail -1 | sed 's/^[0-9]* *//')
