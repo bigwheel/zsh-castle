@@ -163,7 +163,8 @@ function gdhs() {
 
 # git diff --stat=300,300 --stat-graph-width=10 origin/develop..HEAD
 
-alias less="less -R"
+# https://qiita.com/takc923/items/598a68c4684114ffb102
+alias less="less -iMR"
 
 #alias history="history -E"
 
@@ -189,6 +190,8 @@ alias -g ..../='../../..'
 alias -g ...../='../../../..'
 
 alias agl=ag -l
+
+alias mycli=mycli --warn
 
 
 ###################################################
@@ -234,6 +237,16 @@ fi
 
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
+fi
+
+if [ -e /usr/local/opt/gnu-sed/libexec/gnubin ]; then
+    export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    # 面倒なのでもう全部ここに書いてしまった
+    export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+    export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+    export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+    export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 fi
 
 # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
