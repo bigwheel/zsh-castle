@@ -317,6 +317,15 @@ function jqless() {
     fi
 }
 
+# pipeと引数どちらでも表示できるjqformat
+function jqformat() {
+    if [ -p /dev/stdin ]; then
+        cat - | jq -C '.'
+    else
+        cat $@ | jq -C '.'
+    fi
+}
+
 function precmd_set_git_root_variable() {
   GIT_ROOT=$(git rev-parse --show-toplevel 2> /dev/null)
 }
