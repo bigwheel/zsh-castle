@@ -207,6 +207,10 @@ else
     HISTFILE=$HOME/.zsh_history
 fi
 
+if [ -e /usr/local/bin ]; then
+    export PATH="$PATH:/usr/local/bin"
+fi
+
 # gnome-terminalのsolarized絡みで入れたdir_colorsの読み込み設定
 if [ -e ~/.dir_colors ]; then
     eval `dircolors $HOME/.dir_colors/dircolors`
