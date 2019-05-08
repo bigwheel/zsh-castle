@@ -221,9 +221,9 @@ fi
 # http://qiita.com/takeo-asai/items/c0ab835b9ba244d0d17a
 # 上のqiitaに書かれている通り落ちるという報告もあるのでやばかったら削除
 # 後々再検討する場合はaws_zsh_completer.sh自体のヘッダの記述も参考にする
-if which aws_zsh_completer.sh &> /dev/null; then
-    source aws_zsh_completer.sh
-fi
+#if which aws_zsh_completer.sh &> /dev/null; then
+#    source aws_zsh_completer.sh
+#fi
 
 if [ -e ~/go ]; then
     export GOPATH=$HOME/go
