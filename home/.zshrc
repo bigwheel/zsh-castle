@@ -336,3 +336,17 @@ function precmd_set_git_root_variable() {
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd precmd_set_git_root_variable
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/knishida/code/usd-index/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/knishida/code/usd-index/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/knishida/code/usd-index/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/knishida/code/usd-index/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/knishida/code/usd-index/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/knishida/code/usd-index/node_modules/tabtab/.completions/slss.zsh
+
+# for macosx
+# https://stackoverflow.com/a/52230415/4006322
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
