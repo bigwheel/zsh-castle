@@ -182,6 +182,10 @@ if which colordiff &> /dev/null; then
     alias diff=colordiff
 fi
 
+# if which trash-put &> /dev/null; then
+#     alias rm='trash-put'
+# fi
+
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
