@@ -334,11 +334,23 @@ function jqformat() {
     fi
 }
 
+# git用便利変数
 function precmd_set_git_root_variable() {
   GIT_ROOT=$(git rev-parse --show-toplevel 2> /dev/null)
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd precmd_set_git_root_variable
+
+# git用便利変数2
+function precmd_set_git_rel_variable() {
+  GIT_REL=$(git rev-parse --show-prefix 2> /dev/null)
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd precmd_set_git_rel_variable
+
+
+
+
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 # tabtab source for serverless package
