@@ -243,6 +243,17 @@ if [ -e $HOME/.anyenv/ ]; then
     eval "$(anyenv init -)"
 fi
 
+if [ -e $HOME/.tfenv/ ]; then
+    export PATH="$HOME/.tfenv/bin:$PATH"
+fi
+
+if which direnv &> /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
+
+
+
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
