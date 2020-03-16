@@ -182,6 +182,7 @@ if which colordiff &> /dev/null; then
     alias diff=colordiff
 fi
 
+# https://github.com/andreafrancia/trash-cli#can-i-alias-rm-to-trash-put
 # if which trash-put &> /dev/null; then
 #     alias rm='trash-put'
 # fi
