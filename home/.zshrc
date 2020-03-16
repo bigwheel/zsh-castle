@@ -30,6 +30,9 @@ zplug "mollifier/cd-gitroot"
 # https://blog.shibayu36.org/entry/2017/04/01/213621
 zplug "Tarrasch/zsh-autoenv"
 
+# https://medium.com/@n4sekai5y/kubectl-completion-zsh%E3%82%92%E8%BB%8A%E8%BC%AA%E3%81%AE%E5%86%8D%E7%99%BA%E6%98%8E%E3%81%97%E3%81%9F-da6c5345263f
+zplug "nnao45/zsh-kubectl-completion"
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
