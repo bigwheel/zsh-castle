@@ -198,6 +198,8 @@ alias agl=ag -l
 
 alias mycli=mycli --warn
 
+alias k=kubectl
+
 
 ###################################################
 #                 パス/source系                   #
