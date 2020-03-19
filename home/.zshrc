@@ -197,9 +197,10 @@ alias -g .../='../..'
 alias -g ..../='../../..'
 alias -g ...../='../../../..'
 
-alias agl=ag -l
+alias ag="ag --hidden"
+alias agl="ag -l"
 
-alias mycli=mycli --warn
+alias mycli="mycli --warn"
 
 alias k=kubectl
 
@@ -383,3 +384,11 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # for macosx
 # https://stackoverflow.com/a/52230415/4006322
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+alias kubectlks='kubectl -n kube-system'
+alias kubectldd='kubectl -n datadog'
+alias agtf='ag --terraform --ignore .terraform'
