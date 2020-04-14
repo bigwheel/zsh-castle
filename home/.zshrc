@@ -197,7 +197,7 @@ alias -g .../='../..'
 alias -g ..../='../../..'
 alias -g ...../='../../../..'
 
-alias ag="ag --hidden"
+alias agh="ag --hidden"
 alias agl="ag -l"
 
 alias mycli="mycli --warn"
