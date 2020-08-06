@@ -218,6 +218,12 @@ else
     HISTFILE=$HOME/.zsh_history
 fi
 
+# https://cookiecutter.readthedocs.io/en/1.7.2/installation.html#unix-and-macos
+# これによるなら $HOME/bin はやめてこちらに寄せたほうが良いかも
+if [ -e ~/.local/bin ]; then
+    export PATH=$HOME/.local/bin:$PATH
+fi
+
 if [ -e /usr/local/bin ]; then
     export PATH="$PATH:/usr/local/bin"
 fi
@@ -400,3 +406,4 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 alias kubectlks='kubectl -n kube-system'
 alias kubectldd='kubectl -n datadog'
 alias agtf='ag --terraform --ignore .terraform'
+alias jn='jsonnet'
