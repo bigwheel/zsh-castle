@@ -202,7 +202,8 @@ alias agl="ag -l"
 
 alias mycli="mycli --warn"
 
-alias k=kubectl
+# alias k=kubectl
+alias k=kubecolor
 
 
 ###################################################
@@ -237,6 +238,7 @@ if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
 fi
 
 # gnome-terminalのsolarized絡みで入れたdir_colorsの読み込み設定
+# https://github.com/aruhier/gnome-terminal-colors-solarized#dircolors
 if [ -e ~/.dir_colors ]; then
     eval `dircolors $HOME/.dir_colors/dircolors`
 fi
