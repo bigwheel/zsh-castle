@@ -16,12 +16,9 @@ zplug "plugins/git", from:oh-my-zsh
 #else
   zplug "themes/terminalparty", from:oh-my-zsh, as:theme
 #fi
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# 追加: これ,ubuntuの5.4.1環境では解決しているように見えた。
-# macでも確認できたらこのコメントを削除すること
-# https://github.com/zsh-users/zsh-autosuggestions/issues/215
-zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-autosuggestions"
 
 zplug "junegunn/fzf-bin", as:command, rename-to:"fzf", from:gh-r
 zplug "b4b4r07/enhancd", use:init.sh, on:"junegunn/fzf-bin"
