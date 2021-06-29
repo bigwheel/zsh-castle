@@ -16,9 +16,10 @@ zplug "plugins/git", from:oh-my-zsh
 #else
   zplug "themes/terminalparty", from:oh-my-zsh, as:theme
 #fi
-# zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-# zplug "zsh-users/zsh-autosuggestions"
+if [ "$(uname)" != 'Darwin' ]; then
+  zplug "zsh-users/zsh-syntax-highlighting", defer:2
+  zplug "zsh-users/zsh-autosuggestions"
+fi
 
 zplug "junegunn/fzf-bin", as:command, rename-to:"fzf", from:gh-r
 zplug "b4b4r07/enhancd", use:init.sh, on:"junegunn/fzf-bin"
